@@ -58,3 +58,31 @@ document.getElementById("useRealDataButton").addEventListener("click", function(
     useSimulatedSteps = false; // Switch back to real data
     alert("Now using real accelerometer data.");
 });
+
+let simulatedSteps = 0;
+let realSteps = 0;
+const simulateButton = document.getElementById('simulateButton');
+const useRealDataButton = document.getElementById('useRealDataButton');
+
+// Simulate steps
+simulateButton.addEventListener('click', () => {
+    simulatedSteps = parseInt(document.getElementById('stepInput').value) || 0;
+    document.getElementById('stepCountDisplay').innerText = `Steps Simulated: ${simulatedSteps}`;
+});
+
+// Check if DeviceMotion API is supported
+if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion', (event) => {
+        realSteps++;
+        document.getElementById('stepCountDisplay').innerText = `Steps Detected: ${realSteps}`;
+    });
+} else {
+    document.getElementById('stepCountDisplay').innerText = "Device motion not supported";
+}
+
+// Switch back to real data
+useRealDataButton.addEventListener('click', () => {
+    realSteps = 0;
+    document.getElementById('stepCountDisplay').innerText = `Steps Detected: ${realSteps}`;
+});
+
