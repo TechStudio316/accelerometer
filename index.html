@@ -8,39 +8,40 @@
 </head>
 <body>
     <h1>Step Counter Simulation</h1>
+
+    <!-- Input field to enter steps -->
     <input type="number" id="stepInput" placeholder="Enter steps">
     <button id="simulateButton">Simulate Steps</button>
 
-    <p id="stepCountDisplay">Steps Simulated: 0</p>
-<p id="stepCountDisplay">Steps Detected: 0</p>
+    <!-- Display Simulated and Real Steps -->
+    <p id="simulatedStepsDisplay">Steps Simulated: 0</p>
+    <p id="realStepsDisplay">Steps Detected: 0</p>
 
-<!-- Button to switch back to real device data -->
-<button id="useRealDataButton">Use Real Data</button>
+    <!-- Button to switch back to real device data -->
+    <button id="useRealDataButton">Use Real Data</button>
 
-  
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCrjvhYrvjtGayGtkrMcOvTP614l5Z6McU",
+            authDomain: "accelerometer-67e7a.firebaseapp.com",
+            projectId: "accelerometer-67e7a",
+            storageBucket: "accelerometer-67e7a.appspot.com",
+            messagingSenderId: "686414004918",
+            appId: "1:686414004918:web:6155a8cf667ba9f4cfdc17",
+            measurementId: "G-HBWNKFWC2E"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
     <script src="script.js"></script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCrjvhYrvjtGayGtkrMcOvTP614l5Z6McU",
-    authDomain: "accelerometer-67e7a.firebaseapp.com",
-    projectId: "accelerometer-67e7a",
-    storageBucket: "accelerometer-67e7a.appspot.com",
-    messagingSenderId: "686414004918",
-    appId: "1:686414004918:web:6155a8cf667ba9f4cfdc17",
-    measurementId: "G-HBWNKFWC2E"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </body>
 </html>
