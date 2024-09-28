@@ -86,3 +86,21 @@ useRealDataButton.addEventListener('click', () => {
     document.getElementById('stepCountDisplay').innerText = `Steps Detected: ${realSteps}`;
 });
 
+function saveSteps(steps) {
+  db.collection("stepCounter").add({
+    steps: steps,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(() => {
+    console.log("Steps successfully saved!");
+  })
+  .catch((error) => {
+    console.error("Error saving steps: ", error);
+  });
+}
+
+// Call this function when simulating or detecting steps
+simulateButton.addEventListener('click', () => {
+  const steps = parseInt(document.getElementById('stepInput').value) || 0;
+  saveSteps(steps);
+});
